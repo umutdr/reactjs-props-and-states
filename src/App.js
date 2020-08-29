@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+//Imports Components
+// import Nav from './components/Nav';
+// import Tweets from './components/Tweets';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [counter, setCounter] = useState(0);
+	const [toggle, setToggle] = useState(false);
+
+	const incrementTheCounter = () => {
+		setCounter((prev) => prev + 1);
+		console.log(`counter: ${counter}`);
+	};
+
+	const toggleActiveState = () => {
+		setToggle((prev) => !prev);
+		console.log(`state: ${!toggle}`);
+	};
+
+	return (
+		<div className='App'>
+			<h1 className={toggle ? 'active' : 'passive'}>Hello React</h1>
+			<p>
+				<strong>Counter: </strong>
+				{counter}
+			</p>
+			<button onClick={incrementTheCounter}>Increment the Counter</button>
+			<button onClick={toggleActiveState}>Toggle the State</button>
+		</div>
+	);
 }
 
 export default App;
